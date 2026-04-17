@@ -1,3 +1,4 @@
+import Image from 'next/image'
 import { BookOpen, Megaphone, Building } from 'lucide-react'
 
 const FUNDING_ITEMS = [
@@ -5,16 +6,22 @@ const FUNDING_ITEMS = [
     icon: BookOpen,
     title: 'Bible Project',
     body: "Help send Bibles and Scripture resources to people who need God’s Word.",
+    image: '/images/bible-project.jpg',
+    accent: 'bg-gradient-to-br from-amber-400/30 via-amber-500/20 to-transparent',
   },
   {
     icon: Megaphone,
     title: 'Evangelism Project',
     body: 'Help fund Gospel outreach, preaching, media, and evangelists reaching people with Jesus.',
+    image: '/images/evangelism-project.jpg',
+    accent: 'bg-gradient-to-br from-sky-500/30 via-sky-600/40 to-transparent',
   },
   {
     icon: Building,
     title: 'Church Planting Project',
     body: 'Help start and strengthen churches, leaders, and discipleship communities around the world.',
+    image: '/images/church-planting-project.jpg',
+    accent: 'bg-gradient-to-br from-emerald-500/25 via-emerald-600/40 to-transparent',
   },
 ]
 
@@ -37,18 +44,28 @@ export default function Funding() {
 
         <div className="mt-10 grid gap-6 md:grid-cols-3">
           {FUNDING_ITEMS.map((item) => (
-            <div
+            <article
               key={item.title}
-              className="flex flex-col gap-4 rounded-3xl border border-white/10 bg-white/5 px-6 py-7 text-left shadow-2xl shadow-black/50 backdrop-blur"
+              className="flex h-full flex-col overflow-hidden rounded-3xl border border-white/10 bg-white/5 text-left shadow-2xl shadow-black/50 backdrop-blur"
             >
-              <div className="flex h-14 w-14 items-center justify-center rounded-2xl bg-white/10 text-white">
-                <item.icon size={32} />
+              <div className="relative h-48 w-full">
+                <Image
+                  src={item.image}
+                  alt={item.title}
+                  fill
+                  className="object-cover"
+                  sizes="(min-width: 768px) 33vw, 100vw"
+                />
+                <div className="absolute inset-0 bg-gradient-to-b from-black/40 to-black/80" />
+                <div className={`absolute left-5 top-5 h-12 w-12 rounded-2xl border border-white/40 ${item.accent} flex items-center justify-center text-white`}>
+                  <item.icon size={26} />
+                </div>
               </div>
-              <div>
+              <div className="flex flex-1 flex-col gap-2 px-6 py-6">
                 <h3 className="text-lg font-semibold text-white">{item.title}</h3>
-                <p className="mt-2 text-sm leading-relaxed text-white/70">{item.body}</p>
+                <p className="text-sm leading-relaxed text-white/70">{item.body}</p>
               </div>
-            </div>
+            </article>
           ))}
         </div>
 
