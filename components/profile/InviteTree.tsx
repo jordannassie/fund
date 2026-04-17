@@ -1,5 +1,6 @@
 import type { User, InviteEntry } from '@/types'
 import RankBadge from '@/components/ui/RankBadge'
+import Avatar from '@/components/ui/Avatar'
 import { ChevronRight, UserCheck } from 'lucide-react'
 
 interface InviteTreeProps {
@@ -19,9 +20,7 @@ export default function InviteTree({ user }: InviteTreeProps) {
         <div className="rounded-2xl border border-zinc-100 bg-white p-5 shadow-sm">
           <p className="mb-3 text-xs font-medium uppercase tracking-wider text-zinc-400">Invited by</p>
           <div className="flex items-center gap-3">
-            <div className="flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-xl bg-zinc-100 text-sm font-semibold text-zinc-600">
-              CO
-            </div>
+            <Avatar src="https://i.pravatar.cc/150?img=14" initials="CO" size="sm" />
             <div className="min-w-0 flex-1">
               <p className="font-medium text-zinc-900">{user.invitedBy}</p>
               <p className="text-xs text-zinc-400">{user.invitedByUsername}</p>
@@ -42,15 +41,13 @@ export default function InviteTree({ user }: InviteTreeProps) {
           </button>
         </div>
 
-        <div className="space-y-3">
+        <div className="space-y-2">
           {user.directInvitesList.map((invite: InviteEntry) => (
             <div
               key={invite.id}
               className="flex items-center gap-3 rounded-lg p-2 hover:bg-zinc-50 transition-colors cursor-pointer"
             >
-              <div className="flex h-9 w-9 flex-shrink-0 items-center justify-center rounded-xl bg-zinc-100 text-sm font-semibold text-zinc-600">
-                {invite.initials}
-              </div>
+              <Avatar src={invite.avatar} initials={invite.initials} size="sm" />
               <div className="min-w-0 flex-1">
                 <div className="flex items-center gap-2">
                   <p className="text-sm font-medium text-zinc-900 truncate">{invite.name}</p>

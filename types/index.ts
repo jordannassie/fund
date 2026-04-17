@@ -32,6 +32,7 @@ export interface User {
   username: string
   bio: string
   initials: string
+  avatar: string
   rank: Rank
   badges: Badge[]
   totalGiving: number
@@ -49,6 +50,7 @@ export interface InviteEntry {
   id: string
   name: string
   initials: string
+  avatar: string
   rank: Rank
   networkSize: number
   totalGiving: number
@@ -58,6 +60,7 @@ export interface NetworkNode {
   id: string
   name: string
   initials: string
+  avatar: string
   rank: Rank
   rankColor: string
   totalGiving: number
@@ -74,6 +77,7 @@ export interface LeaderboardEntry {
   id: string
   name: string
   initials: string
+  avatar: string
   badge: BadgeName | null
   userRank: Rank
   totalGiving: number

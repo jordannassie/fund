@@ -1,6 +1,7 @@
 import { X, DollarSign, Users, UserPlus } from 'lucide-react'
 import type { NetworkNode } from '@/types'
 import RankBadge from '@/components/ui/RankBadge'
+import Avatar from '@/components/ui/Avatar'
 
 interface NodePanelProps {
   node: NetworkNode
@@ -20,12 +21,7 @@ export default function NodePanel({ node, onClose }: NodePanelProps) {
       {/* Header */}
       <div className="flex items-start justify-between border-b border-zinc-100 p-5">
         <div className="flex items-center gap-3">
-          <div
-            className="flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-xl text-sm font-bold"
-            style={{ background: isCenter ? '#18181b' : '#f4f4f5', color: isCenter ? '#fff' : '#52525b' }}
-          >
-            {node.initials}
-          </div>
+          <Avatar src={node.avatar} initials={node.initials} size="md" />
           <div>
             <p className="font-semibold text-zinc-900">{node.name}</p>
             {isCenter && <p className="text-xs text-zinc-400">You</p>}

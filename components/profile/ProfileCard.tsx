@@ -1,6 +1,7 @@
 import { Globe, AtSign, Link2 } from 'lucide-react'
 import RankBadge from '@/components/ui/RankBadge'
 import ProgressBar from '@/components/ui/ProgressBar'
+import Avatar from '@/components/ui/Avatar'
 import type { User } from '@/types'
 import { RANK_CONFIG, getRankProgress } from '@/types'
 
@@ -22,9 +23,14 @@ export default function ProfileCard({ user }: ProfileCardProps) {
       <div className="px-5 pb-6 sm:px-8">
         {/* Avatar */}
         <div className="-mt-10 mb-4 flex items-end justify-between sm:-mt-12">
-          <div className="flex h-20 w-20 items-center justify-center rounded-2xl border-4 border-white bg-zinc-900 text-xl font-bold text-white shadow-sm sm:h-24 sm:w-24">
-            {user.initials}
-          </div>
+          <Avatar
+            src={user.avatar}
+            initials={user.initials}
+            size="xl"
+            ring
+            ringColor="ring-white"
+            className="border-4 border-white shadow-sm"
+          />
           <button className="rounded-full border border-zinc-200 px-4 py-1.5 text-sm font-medium text-zinc-600 hover:bg-zinc-50 transition-colors">
             Edit Profile
           </button>
@@ -71,7 +77,6 @@ export default function ProfileCard({ user }: ProfileCardProps) {
           />
         </div>
 
-        {/* Joined */}
         <p className="mt-4 text-xs text-zinc-400">Member since {user.joinedAt}</p>
       </div>
     </div>

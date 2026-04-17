@@ -25,10 +25,26 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <body className="flex min-h-full flex-col bg-white text-zinc-900">
         <Navbar />
         <main className="flex flex-1 flex-col">{children}</main>
-        <footer className="border-t border-zinc-100 py-8 text-center text-xs text-zinc-400">
-          <div className="mx-auto max-w-6xl px-4">
-            <p>© {new Date().getFullYear()} 1B Project. All rights reserved.</p>
-            <p className="mt-1 text-zinc-300">One fund. One mission. One billion.</p>
+        <footer className="border-t border-zinc-100 py-8 text-xs text-zinc-400">
+          <div className="mx-auto max-w-6xl px-4 sm:px-6">
+            <div className="flex flex-col items-center gap-3 sm:flex-row sm:justify-between">
+              <div>
+                <p>© {new Date().getFullYear()} 1B Project. All rights reserved.</p>
+                <p className="mt-0.5 text-zinc-300">One fund. One mission. One billion.</p>
+              </div>
+              <nav className="flex items-center gap-4 text-zinc-400">
+                <a href="/" className="hover:text-zinc-700 transition-colors">Home</a>
+                <a href="/network" className="hover:text-zinc-700 transition-colors">Network</a>
+                <a href="/leaderboard" className="hover:text-zinc-700 transition-colors">Leaderboard</a>
+                <a href="/profile" className="hover:text-zinc-700 transition-colors">Profile</a>
+                <a
+                  href="/admin"
+                  className="flex items-center gap-1 rounded-md border border-zinc-200 px-2 py-0.5 text-zinc-500 hover:border-zinc-300 hover:text-zinc-700 transition-colors"
+                >
+                  <span className="text-[10px] font-bold">⚙</span> Admin
+                </a>
+              </nav>
+            </div>
           </div>
         </footer>
       </body>

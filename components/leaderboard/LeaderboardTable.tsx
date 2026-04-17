@@ -9,6 +9,7 @@ import {
 } from '@/data/sample'
 import type { LeaderboardEntry } from '@/types'
 import RankBadge from '@/components/ui/RankBadge'
+import Avatar from '@/components/ui/Avatar'
 import { Medal } from 'lucide-react'
 
 const TABS = [
@@ -44,13 +45,13 @@ function Row({ entry, activeTab, isCurrentUser }: { entry: LeaderboardEntry; act
       </div>
 
       {/* Avatar */}
-      <div
-        className={`flex h-9 w-9 flex-shrink-0 items-center justify-center rounded-xl text-sm font-semibold ${
-          isCurrentUser ? 'bg-blue-600 text-white' : 'bg-zinc-100 text-zinc-600'
-        }`}
-      >
-        {entry.initials}
-      </div>
+      <Avatar
+        src={entry.avatar}
+        initials={entry.initials}
+        size="sm"
+        ring={isCurrentUser}
+        ringColor="ring-blue-200"
+      />
 
       {/* Name + rank */}
       <div className="min-w-0 flex-1">
@@ -69,7 +70,7 @@ function Row({ entry, activeTab, isCurrentUser }: { entry: LeaderboardEntry; act
         </div>
       </div>
 
-      {/* Stats */}
+      {/* Stats (desktop) */}
       <div className="hidden items-center gap-8 sm:flex">
         <StatCell label="Giving"   value={fmt(entry.totalGiving)} />
         {activeTab === 'networks' && <StatCell label="Net. Total" value={fmt(entry.networkTotal)} />}

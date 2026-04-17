@@ -18,27 +18,19 @@ export default function NetworkGraph() {
   const handleZoomOut = () => setZoom(z => Math.max(z - 0.25, 0.5))
   const handleReset   = () => setZoom(1)
 
-  // Build edge list from parentId relationships
   const edges = NETWORK_NODES.filter(n => n.parentId !== null).map(n => {
     const parent = NETWORK_NODES.find(p => p.id === n.parentId)!
     return { from: parent, to: n }
   })
 
-  function nodeColor(node: NetworkNode): { fill: string; stroke: string; text: string } {
-    if (node.level === 0) return { fill: '#18181b', stroke: '#18181b', text: '#ffffff' }
-    if (node.level === 1) return { fill: '#ffffff', stroke: '#d4d4d8', text: '#3f3f46' }
-    return { fill: '#fafafa', stroke: '#e4e4e7', text: '#a1a1aa' }
+  function edgeColor(to: NetworkNode): string {
+    return to.level === 1 ? '#e4e4e7' : '#f4f4f5'
   }
 
   function nodeRadius(node: NetworkNode): number {
     if (node.level === 0) return 26
     if (node.level === 1) return 20
-    return 14
-  }
-
-  function edgeColor(to: NetworkNode): string {
-    if (to.level === 1) return '#e4e4e7'
-    return '#f4f4f5'
+    return 13
   }
 
   const isSelected = (node: NetworkNode) => selected?.id === node.id
@@ -53,6 +45,18 @@ export default function NetworkGraph() {
           className="h-full w-full transition-all duration-300"
           xmlns="http://www.w3.org/2000/svg"
         >
+          {/* Clip paths for circular photos */}
+          <defs>
+            {NETWORK_NODES.map(node => {
+              const r = nodeRadius(node)
+              return (
+                <clipPath key={`clip-${node.id}`} id={`clip-${node.id}`}>
+                  <circle cx={node.x} cy={node.y} r={r - 1.5} />
+                </clipPath>
+              )
+            })}
+          </defs>
+
           {/* Edges */}
           {edges.map((edge, i) => (
             <line
@@ -67,11 +71,11 @@ export default function NetworkGraph() {
             />
           ))}
 
-          {/* Nodes (render L2 first, then L1, then center so center is on top) */}
+          {/* Nodes — L2 first so center renders on top */}
           {[...NETWORK_NODES].reverse().map((node) => {
             const r = nodeRadius(node)
-            const colors = nodeColor(node)
             const sel = isSelected(node)
+            const isCenter = node.level === 0
 
             return (
               <g
@@ -88,32 +92,58 @@ export default function NetworkGraph() {
                     fill="none"
                     stroke="#3b82f6"
                     strokeWidth={1.5}
-                    opacity={0.6}
+                    opacity={0.5}
                   />
                 )}
-                {/* Node circle */}
+
+                {/* Background circle */}
                 <circle
                   cx={node.x}
                   cy={node.y}
                   r={r}
-                  fill={colors.fill}
-                  stroke={sel ? '#3b82f6' : colors.stroke}
+                  fill={isCenter ? '#18181b' : '#fff'}
+                  stroke={sel ? '#3b82f6' : isCenter ? '#18181b' : '#d4d4d8'}
                   strokeWidth={sel ? 2 : 1.5}
                 />
-                {/* Initials (L0 + L1 only) */}
-                {node.level < 2 && (
+
+                {/* Photo — L0 and L1 show full photo, L2 show smaller */}
+                {node.level < 2 ? (
+                  <image
+                    href={node.avatar}
+                    x={node.x - r + 1.5}
+                    y={node.y - r + 1.5}
+                    width={(r - 1.5) * 2}
+                    height={(r - 1.5) * 2}
+                    clipPath={`url(#clip-${node.id})`}
+                    preserveAspectRatio="xMidYMid slice"
+                  />
+                ) : (
+                  // L2: small photo
+                  <image
+                    href={node.avatar}
+                    x={node.x - r + 1}
+                    y={node.y - r + 1}
+                    width={(r - 1) * 2}
+                    height={(r - 1) * 2}
+                    clipPath={`url(#clip-${node.id})`}
+                    preserveAspectRatio="xMidYMid slice"
+                    opacity={0.85}
+                  />
+                )}
+
+                {/* "You" label under center node */}
+                {isCenter && (
                   <text
                     x={node.x}
-                    y={node.y + 1}
+                    y={node.y + r + 12}
                     textAnchor="middle"
-                    dominantBaseline="middle"
-                    fontSize={node.level === 0 ? 10 : 8}
-                    fontWeight="700"
-                    fill={colors.text}
+                    fontSize={9}
+                    fontWeight="600"
+                    fill="#3b82f6"
                     fontFamily="system-ui, -apple-system, sans-serif"
                     className="select-none pointer-events-none"
                   >
-                    {node.initials}
+                    You
                   </text>
                 )}
               </g>
@@ -158,7 +188,6 @@ export default function NetworkGraph() {
         </div>
       )}
 
-      {/* Click hint */}
       {!selected && (
         <div className="pointer-events-none absolute bottom-4 right-4">
           <p className="rounded-full border border-zinc-100 bg-white px-3 py-1 text-xs text-zinc-400 shadow-sm">
