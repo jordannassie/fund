@@ -15,23 +15,20 @@ export default function Problem() {
   const progress = Math.round((PROFILE_CARD.networkSize / PROFILE_CARD.networkTarget) * 100)
 
   return (
-    <section
-      className="relative overflow-hidden border-b border-zinc-100"
-      style={{ minHeight: '620px' }}
-    >
+    <section className="relative overflow-hidden border-b border-zinc-100">
       {/* Background image */}
       <div
         className="absolute inset-0 bg-cover bg-center"
         style={{
           backgroundImage:
-            "url('https://images.unsplash.com/photo-1529333166437-7750a6dd5a70?auto=format&fit=crop&w=1600&q=80')",
+            "url('https://images.unsplash.com/photo-1509099836639-18ba1795216d?auto=format&fit=crop&w=1600&q=80')",
         }}
       />
       {/* Dark overlay — heavier at bottom */}
       <div className="absolute inset-0 bg-gradient-to-t from-black/95 via-black/65 to-black/35" />
 
-      {/* Centered content */}
-      <div className="absolute inset-x-0 bottom-0 flex flex-col items-center px-4 pb-12 sm:pb-16">
+      {/* Centered content — flows naturally so nothing gets clipped */}
+      <div className="relative flex flex-col items-center px-4 pt-16 pb-14 sm:pt-20 sm:pb-16">
 
         {/* ── Profile card ── */}
         <div className="w-full max-w-xs">
@@ -128,8 +125,6 @@ export default function Problem() {
         </div>
       </div>
 
-      {/* Subtle bottom fade */}
-      <div className="pointer-events-none absolute inset-x-0 bottom-0 h-6 bg-gradient-to-t from-black/60 to-transparent" />
     </section>
   )
 }
