@@ -2,6 +2,7 @@ import type { Metadata } from 'next'
 import { Geist } from 'next/font/google'
 import './globals.css'
 import Navbar from '@/components/nav/Navbar'
+import Link from 'next/link'
 
 const geist = Geist({
   subsets: ['latin'],
@@ -33,16 +34,27 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
                 <p className="mt-0.5 text-zinc-300">One fund. One mission. One billion.</p>
               </div>
               <nav className="flex items-center gap-4 text-zinc-400">
-                <a href="/" className="hover:text-zinc-700 transition-colors">Home</a>
-                <a href="/network" className="hover:text-zinc-700 transition-colors">Network</a>
-                <a href="/leaderboard" className="hover:text-zinc-700 transition-colors">Leaderboard</a>
-                <a href="/profile" className="hover:text-zinc-700 transition-colors">Profile</a>
-                <a
+                <Link href="/" className="hover:text-zinc-700 transition-colors">
+                  Home
+                </Link>
+                <Link href="/network" className="hover:text-zinc-700 transition-colors">
+                  Network
+                </Link>
+                <Link href="/leaderboard" className="hover:text-zinc-700 transition-colors">
+                  Leaderboard
+                </Link>
+                <Link href="/profile" className="hover:text-zinc-700 transition-colors">
+                  Profile
+                </Link>
+                <Link href="/why" className="hover:text-zinc-700 transition-colors">
+                  Why
+                </Link>
+                <Link
                   href="/admin"
                   className="flex items-center gap-1 rounded-md border border-zinc-200 px-2 py-0.5 text-zinc-500 hover:border-zinc-300 hover:text-zinc-700 transition-colors"
                 >
                   <span className="text-[10px] font-bold">⚙</span> Admin
-                </a>
+                </Link>
               </nav>
             </div>
           </div>
