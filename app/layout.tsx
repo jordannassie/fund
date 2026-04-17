@@ -49,6 +49,9 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
                 <Link href="/why" className="hover:text-zinc-700 transition-colors">
                   Why
                 </Link>
+                <Link href="/team" className="hover:text-zinc-700 transition-colors">
+                  Team
+                </Link>
                 <Link
                   href="/admin"
                   className="flex items-center gap-1 rounded-md border border-zinc-200 px-2 py-0.5 text-zinc-500 hover:border-zinc-300 hover:text-zinc-700 transition-colors"
