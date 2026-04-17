@@ -59,11 +59,16 @@ function NetworkBackground() {
             <circle cx={n.x} cy={n.y} r={n.r} />
           </clipPath>
         ))}
-        {/* Radial fade so network softens toward the center card area */}
+        {/* Radial fade behind the card center */}
         <radialGradient id="centerFade" cx="50%" cy="40%" r="30%">
           <stop offset="0%"  stopColor="white" stopOpacity="0.95" />
           <stop offset="100%" stopColor="white" stopOpacity="0" />
         </radialGradient>
+        {/* Bottom fade — hides any nodes that drift into the text area */}
+        <linearGradient id="bottomFade" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="55%" stopColor="white" stopOpacity="0" />
+          <stop offset="100%" stopColor="white" stopOpacity="1" />
+        </linearGradient>
       </defs>
 
       {/* ── Edges: center → L1 ── */}
@@ -121,10 +126,10 @@ function NetworkBackground() {
       ))}
 
       {/* Soft white radial mask over center so card reads cleanly */}
-      <circle
-        cx={CENTER.x} cy={CENTER.y} r="160"
-        fill="url(#centerFade)"
-      />
+      <circle cx={CENTER.x} cy={CENTER.y} r="160" fill="url(#centerFade)" />
+
+      {/* Bottom fade — covers nodes below the card so text area stays clean */}
+      <rect x="0" y="0" width="1200" height="740" fill="url(#bottomFade)" />
     </svg>
   )
 }
@@ -143,8 +148,8 @@ export default function Problem() {
         {/* ── Profile card ── */}
         <div className="relative w-full pt-14">
 
-          {/* Floating avatar */}
-          <div className="absolute left-1/2 top-0 -translate-x-1/2">
+          {/* Floating avatar — z-20 keeps it in front of the card */}
+          <div className="absolute left-1/2 top-0 z-20 -translate-x-1/2">
             <div className="h-28 w-28 overflow-hidden rounded-full border-4 border-white shadow-xl ring-2 ring-zinc-100">
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img
