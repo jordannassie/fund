@@ -1,6 +1,6 @@
 const PROFILE_CARD = {
-  name: 'Jordan Nassie',
-  username: '@jordannassie',
+  name: 'Jimmy Smith',
+  username: '@jimmysmith',
   bio: 'Building something that matters. Join the 1B Project and grow your network.',
   avatarSrc: 'https://i.pravatar.cc/150?img=12',
   currentRank: 'Connector',

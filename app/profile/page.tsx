@@ -49,7 +49,7 @@ export default function ProfilePage() {
               </p>
               <div className="mt-4 flex gap-2">
                 <div className="flex-1 overflow-hidden rounded-lg border border-zinc-200 bg-zinc-50 px-3 py-2 text-sm text-zinc-400 truncate">
-                  1bproject.com/join/jordannassie
+                  1bproject.com/join/jimmysmith
                 </div>
                 <button className="flex-shrink-0 rounded-lg bg-zinc-900 px-4 py-2 text-sm font-medium text-white hover:bg-zinc-700 transition-colors">
                   Copy link

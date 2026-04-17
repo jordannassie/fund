@@ -34,8 +34,8 @@ export const SAMPLE_DIRECT_INVITES: InviteEntry[] = [
 
 export const CURRENT_USER: User = {
   id: 'u1',
-  name: 'Jordan Nassie',
-  username: '@jordannassie',
+  name: 'Jimmy Smith',
+  username: '@jimmysmith',
   bio: 'Building something that matters. Join the 1B Project and grow your network.',
   initials: 'JN',
   avatar: av(12),
@@ -65,7 +65,7 @@ export const LIVE_STATS: LiveStats = {
 
 export const NETWORK_NODES: NetworkNode[] = [
   // Level 0 — you
-  { id: 'u1',  name: 'Jordan Nassie',   initials: 'JN', avatar: av(12), rank: 'Connector',  rankColor: '#059669', totalGiving: 2500, networkGiving: 48750, directInvites: 8,  level: 0, x: 425, y: 290, parentId: null },
+  { id: 'u1',  name: 'Jimmy Smith',   initials: 'JS', avatar: av(12), rank: 'Connector',  rankColor: '#059669', totalGiving: 2500, networkGiving: 48750, directInvites: 8,  level: 0, x: 425, y: 290, parentId: null },
 
   // Level 1 — direct invites (radius 145 from center)
   { id: 'u2',  name: 'Sarah Mitchell',  initials: 'SM', avatar: av(5),  rank: 'Builder',    rankColor: '#2563EB', totalGiving: 1500, networkGiving: 9800,  directInvites: 3,  level: 1, x: 425, y: 145, parentId: 'u1' },
@@ -121,7 +121,7 @@ export const LEADERBOARD_BIGGEST: LeaderboardEntry[] = [
   { rank: 11, id: 'l11', name: 'Rosa Mendez',      initials: 'RM', avatar: av(68), badge: 'Network of 25',  userRank: 'Leader',     totalGiving: 2400,  networkTotal: 78000,  networkSize: 98,   growthRate: 10, badgeCount: 4 },
   { rank: 12, id: 'l12', name: 'Ben Asante',       initials: 'BA', avatar: av(16), badge: 'Rising Builder',  userRank: 'Connector', totalGiving: 2200,  networkTotal: 64000,  networkSize: 80,   growthRate: 21, badgeCount: 4 },
   { rank: 13, id: 'l13', name: 'Pita Havili',      initials: 'PH', avatar: av(21), badge: 'Rising Builder',  userRank: 'Connector', totalGiving: 1900,  networkTotal: 55000,  networkSize: 63,   growthRate: 17, badgeCount: 4 },
-  { rank: 14, id: 'u1',  name: 'Jordan Nassie',    initials: 'JN', avatar: av(12), badge: 'Rising Builder',  userRank: 'Connector', totalGiving: 2500,  networkTotal: 48750,  networkSize: 47,   growthRate: 14, badgeCount: 5 },
+  { rank: 14, id: 'u1',  name: 'Jimmy Smith',    initials: 'JS', avatar: av(12), badge: 'Rising Builder',  userRank: 'Connector', totalGiving: 2500,  networkTotal: 48750,  networkSize: 47,   growthRate: 14, badgeCount: 5 },
   { rank: 15, id: 'l15', name: 'Celine Dubois',    initials: 'CD', avatar: av(50), badge: 'Network of 5',   userRank: 'Builder',   totalGiving: 1200,  networkTotal: 32000,  networkSize: 38,   growthRate: 8,  badgeCount: 3 },
 ]
 
@@ -168,7 +168,7 @@ export const ADMIN_MEMBERS: AdminMember[] = [
   { id: 'l11', name: 'Rosa Mendez',      username: '@rosam',         initials: 'RM', avatar: av(68), rank: 'Leader',     networkSize: 98,   totalGiving: 2400,  directInvites: 7,  badgeCount: 4, status: 'active',   joinedAt: 'Jan 15, 2025' },
   { id: 'l12', name: 'Ben Asante',       username: '@benasante',     initials: 'BA', avatar: av(16), rank: 'Connector',  networkSize: 80,   totalGiving: 2200,  directInvites: 6,  badgeCount: 4, status: 'active',   joinedAt: 'Jan 16, 2025' },
   { id: 'l13', name: 'Pita Havili',      username: '@pitahavili',    initials: 'PH', avatar: av(21), rank: 'Connector',  networkSize: 63,   totalGiving: 1900,  directInvites: 5,  badgeCount: 4, status: 'active',   joinedAt: 'Jan 18, 2025' },
-  { id: 'u1',  name: 'Jordan Nassie',    username: '@jordannassie',  initials: 'JN', avatar: av(12), rank: 'Connector',  networkSize: 47,   totalGiving: 2500,  directInvites: 8,  badgeCount: 5, status: 'active',   joinedAt: 'Jan 10, 2025' },
+  { id: 'u1',  name: 'Jimmy Smith',    username: '@jimmysmith',  initials: 'JS', avatar: av(12), rank: 'Connector',  networkSize: 47,   totalGiving: 2500,  directInvites: 8,  badgeCount: 5, status: 'active',   joinedAt: 'Jan 10, 2025' },
   { id: 'l15', name: 'Celine Dubois',    username: '@celinedubois',  initials: 'CD', avatar: av(50), rank: 'Builder',    networkSize: 38,   totalGiving: 1200,  directInvites: 4,  badgeCount: 3, status: 'active',   joinedAt: 'Jan 20, 2025' },
   { id: 'u2',  name: 'Sarah Mitchell',   username: '@sarahmitchell', initials: 'SM', avatar: av(5),  rank: 'Builder',    networkSize: 9,    totalGiving: 1500,  directInvites: 3,  badgeCount: 3, status: 'active',   joinedAt: 'Jan 14, 2025' },
   { id: 'u3',  name: 'Marcus Thompson',  username: '@marcust',       initials: 'MT', avatar: av(15), rank: 'Connector',  networkSize: 18,   totalGiving: 3200,  directInvites: 4,  badgeCount: 4, status: 'active',   joinedAt: 'Jan 15, 2025' },
