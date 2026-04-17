@@ -2,7 +2,7 @@ const PROFILE_CARD = {
   name: 'Jordan Nassie',
   username: '@jordannassie',
   bio: 'Building something that matters. Join the 1B Project and grow your network.',
-  avatarSrc: 'https://i.pravatar.cc/150?img=11',
+  avatarSrc: 'https://i.pravatar.cc/150?img=12',
   currentRank: 'Connector',
   nextRank: 'Multiplier',
   networkSize: 47,
@@ -15,15 +15,16 @@ export default function Problem() {
   const progress = Math.round((PROFILE_CARD.networkSize / PROFILE_CARD.networkTarget) * 100)
 
   return (
-    <section className="border-b border-zinc-100 bg-white px-4 py-20 sm:py-28">
+    <section className="border-b border-zinc-100 bg-white px-4 pb-20 pt-24 sm:pb-28 sm:pt-32">
       <div className="mx-auto flex max-w-lg flex-col items-center text-center">
 
         {/* ── Profile card ── */}
-        <div className="w-full rounded-2xl border border-zinc-200 bg-white px-6 py-6 shadow-lg">
+        {/* Outer wrapper gives space for the avatar that pops above the card */}
+        <div className="relative w-full pt-14">
 
-          {/* Top row: avatar + edit button */}
-          <div className="flex items-start justify-between">
-            <div className="h-14 w-14 overflow-hidden rounded-full ring-2 ring-zinc-100 shadow-sm">
+          {/* Floating avatar — centered, overflowing above the card top */}
+          <div className="absolute left-1/2 top-0 -translate-x-1/2">
+            <div className="h-28 w-28 overflow-hidden rounded-full border-4 border-white shadow-xl ring-2 ring-zinc-100">
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img
                 src={PROFILE_CARD.avatarSrc}
@@ -31,75 +32,85 @@ export default function Problem() {
                 className="h-full w-full object-cover"
               />
             </div>
-            <span className="rounded-lg border border-zinc-200 px-3 py-1 text-[11px] font-medium text-zinc-500">
-              Edit Profile
-            </span>
           </div>
 
-          {/* Name + handle */}
-          <div className="mt-3 text-left">
-            <p className="text-base font-bold text-zinc-900">{PROFILE_CARD.name}</p>
-            <p className="text-xs text-zinc-400">{PROFILE_CARD.username}</p>
-          </div>
+          {/* Card body */}
+          <div className="rounded-2xl border border-zinc-200 bg-white px-6 pb-6 pt-16 shadow-lg">
 
-          {/* Bio */}
-          <p className="mt-2 text-left text-xs leading-relaxed text-zinc-500">
-            {PROFILE_CARD.bio}
-          </p>
-
-          {/* Social icons */}
-          <div className="mt-3 flex gap-3 text-zinc-300">
-            <svg className="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2}>
-              <path d="M4 4l16 16M4 20L20 4" />
-            </svg>
-            <svg className="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2}>
-              <circle cx="12" cy="12" r="10" /><path d="M2 12h20M12 2a15 15 0 010 20M12 2a15 15 0 000 20" />
-            </svg>
-            <svg className="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2}>
-              <path d="M10 13a5 5 0 007.54.54l3-3a5 5 0 00-7.07-7.07l-1.72 1.71" /><path d="M14 11a5 5 0 00-7.54-.54l-3 3a5 5 0 007.07 7.07l1.71-1.71" />
-            </svg>
-          </div>
-
-          {/* Divider */}
-          <div className="my-4 border-t border-zinc-100" />
-
-          {/* Rank pills */}
-          <div className="flex items-center justify-between">
-            <div>
-              <p className="text-[10px] font-semibold uppercase tracking-widest text-zinc-400">
-                Current rank
-              </p>
-              <span className="mt-1.5 inline-flex items-center gap-1.5 rounded-full border border-emerald-200 bg-emerald-50 px-3 py-1 text-xs font-semibold text-emerald-700">
-                <span className="h-1.5 w-1.5 rounded-full bg-emerald-500" />
-                {PROFILE_CARD.currentRank}
+            {/* Edit Profile — top right */}
+            <div className="flex justify-end">
+              <span className="rounded-lg border border-zinc-200 px-3 py-1 text-[11px] font-medium text-zinc-500">
+                Edit Profile
               </span>
             </div>
-            <div className="text-right">
-              <p className="text-[10px] font-semibold uppercase tracking-widest text-zinc-400">
-                Next rank
-              </p>
-              <span className="mt-1.5 inline-flex items-center gap-1.5 rounded-full border border-violet-200 bg-violet-50 px-3 py-1 text-xs font-semibold text-violet-700">
-                ♦ {PROFILE_CARD.nextRank}
-              </span>
-            </div>
-          </div>
 
-          {/* Progress bar */}
-          <div className="mt-4">
-            <div className="mb-1.5 flex justify-between text-[10px] text-zinc-400">
-              <span>{PROFILE_CARD.networkSize} of {PROFILE_CARD.networkTarget} members</span>
-              <span>{PROFILE_CARD.toNext} to {PROFILE_CARD.nextRank}</span>
+            {/* Name + handle */}
+            <div className="mt-2 text-left">
+              <p className="text-base font-bold text-zinc-900">{PROFILE_CARD.name}</p>
+              <p className="text-xs text-zinc-400">{PROFILE_CARD.username}</p>
             </div>
-            <div className="h-1.5 w-full overflow-hidden rounded-full bg-zinc-100">
-              <div
-                className="h-full rounded-full bg-violet-500"
-                style={{ width: `${progress}%` }}
-              />
-            </div>
-          </div>
 
-          {/* Member since */}
-          <p className="mt-4 text-[10px] text-zinc-300">Member since {PROFILE_CARD.memberSince}</p>
+            {/* Bio */}
+            <p className="mt-2 text-left text-xs leading-relaxed text-zinc-500">
+              {PROFILE_CARD.bio}
+            </p>
+
+            {/* Social icons */}
+            <div className="mt-3 flex gap-3 text-zinc-300">
+              <svg className="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2}>
+                <path d="M4 4l16 16M4 20L20 4" />
+              </svg>
+              <svg className="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2}>
+                <circle cx="12" cy="12" r="10" /><path d="M2 12h20M12 2a15 15 0 010 20M12 2a15 15 0 000 20" />
+              </svg>
+              <svg className="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2}>
+                <path d="M10 13a5 5 0 007.54.54l3-3a5 5 0 00-7.07-7.07l-1.72 1.71" /><path d="M14 11a5 5 0 00-7.54-.54l-3 3a5 5 0 007.07 7.07l1.71-1.71" />
+              </svg>
+            </div>
+
+            {/* Divider */}
+            <div className="my-4 border-t border-zinc-100" />
+
+            {/* Rank pills */}
+            <div className="flex items-center justify-between">
+              <div>
+                <p className="text-[10px] font-semibold uppercase tracking-widest text-zinc-400">
+                  Current rank
+                </p>
+                <span className="mt-1.5 inline-flex items-center gap-1.5 rounded-full border border-emerald-200 bg-emerald-50 px-3 py-1 text-xs font-semibold text-emerald-700">
+                  <span className="h-1.5 w-1.5 rounded-full bg-emerald-500" />
+                  {PROFILE_CARD.currentRank}
+                </span>
+              </div>
+              <div className="text-right">
+                <p className="text-[10px] font-semibold uppercase tracking-widest text-zinc-400">
+                  Next rank
+                </p>
+                <span className="mt-1.5 inline-flex items-center gap-1.5 rounded-full border border-violet-200 bg-violet-50 px-3 py-1 text-xs font-semibold text-violet-700">
+                  ♦ {PROFILE_CARD.nextRank}
+                </span>
+              </div>
+            </div>
+
+            {/* Progress bar */}
+            <div className="mt-4">
+              <div className="mb-1.5 flex justify-between text-[10px] text-zinc-400">
+                <span>{PROFILE_CARD.networkSize} of {PROFILE_CARD.networkTarget} members</span>
+                <span>{PROFILE_CARD.toNext} to {PROFILE_CARD.nextRank}</span>
+              </div>
+              <div className="h-1.5 w-full overflow-hidden rounded-full bg-zinc-100">
+                <div
+                  className="h-full rounded-full bg-violet-500"
+                  style={{ width: `${progress}%` }}
+                />
+              </div>
+            </div>
+
+            {/* Member since */}
+            <p className="mt-4 text-center text-[10px] text-zinc-300">
+              Member since {PROFILE_CARD.memberSince}
+            </p>
+          </div>
         </div>
 
         {/* ── Problem text ── */}
