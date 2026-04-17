@@ -72,12 +72,6 @@ const PARTNERS = [
   'I Am Second',
 ]
 
-const GLOBAL_STATS = [
-  { value: '$705K', label: 'Total Funded' },
-  { value: '3.3M+', label: 'Lives Impacted' },
-  { value: '147', label: 'Countries' },
-  { value: '3', label: 'Gospel Outcomes' },
-]
 
 export default function Funding() {
   return (
@@ -96,16 +90,6 @@ export default function Funding() {
             Every gift given through 1B Project helps fund three Gospel priorities through trusted
             ministry partners worldwide.
           </p>
-        </div>
-
-        {/* ── Global stats bar ── */}
-        <div className="mt-10 grid grid-cols-2 gap-px overflow-hidden rounded-2xl border border-white/10 bg-white/5 sm:grid-cols-4">
-          {GLOBAL_STATS.map((s) => (
-            <div key={s.label} className="bg-zinc-950/60 px-6 py-5 text-center">
-              <p className="text-2xl font-bold tracking-tight text-white">{s.value}</p>
-              <p className="mt-1 text-[11px] uppercase tracking-widest text-white/40">{s.label}</p>
-            </div>
-          ))}
         </div>
 
         {/* ── Cards ── */}
