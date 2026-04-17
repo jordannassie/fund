@@ -20,16 +20,16 @@ const FUNDING_ITEMS = [
 
 export default function Funding() {
   return (
-    <section className="border-y border-zinc-100 bg-white px-4 py-14 sm:px-6">
+    <section className="bg-zinc-950 px-4 py-16 sm:px-6">
       <div className="mx-auto max-w-6xl">
         <div className="text-center">
-          <p className="text-xs font-semibold uppercase tracking-[0.4em] text-zinc-400">
+          <p className="text-xs font-semibold uppercase tracking-[0.4em] text-white/70">
             HOW IT WORKS
           </p>
-          <h2 className="mt-3 text-3xl font-semibold text-zinc-900 sm:text-4xl">
+          <h2 className="mt-3 text-3xl font-semibold text-white sm:text-4xl">
             How 1B Project Funds the Gospel
           </h2>
-          <p className="mt-3 text-sm leading-relaxed text-zinc-500">
+          <p className="mt-3 text-sm leading-relaxed text-white/70">
             Every gift given through 1B Project helps fund three Gospel priorities through trusted
             ministry partners worldwide.
           </p>
@@ -39,20 +39,20 @@ export default function Funding() {
           {FUNDING_ITEMS.map((item) => (
             <div
               key={item.title}
-              className="flex flex-col gap-4 rounded-3xl border border-zinc-100 bg-white p-6 text-left shadow-sm transition hover:shadow-lg"
+              className="flex flex-col gap-4 rounded-3xl border border-white/10 bg-white/5 px-6 py-7 text-left shadow-2xl shadow-black/50 backdrop-blur"
             >
-              <div className="flex h-14 w-14 items-center justify-center rounded-2xl bg-zinc-50 text-zinc-900">
+              <div className="flex h-14 w-14 items-center justify-center rounded-2xl bg-white/10 text-white">
                 <item.icon size={32} />
               </div>
               <div>
-                <h3 className="text-lg font-semibold text-zinc-900">{item.title}</h3>
-                <p className="mt-2 text-sm leading-relaxed text-zinc-500">{item.body}</p>
+                <h3 className="text-lg font-semibold text-white">{item.title}</h3>
+                <p className="mt-2 text-sm leading-relaxed text-white/70">{item.body}</p>
               </div>
             </div>
           ))}
         </div>
 
-        <p className="mt-8 text-center text-sm font-semibold uppercase tracking-[0.4em] text-zinc-400">
+        <p className="mt-8 text-center text-sm font-semibold uppercase tracking-[0.4em] text-white/60">
           One fund. Three Gospel outcomes. One global mission.
         </p>
       </div>
