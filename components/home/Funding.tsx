@@ -64,6 +64,14 @@ const FUNDING_ITEMS = [
   },
 ]
 
+const PARTNERS = [
+  'Jesus Film',
+  'Daily Churches',
+  '1Billion.org',
+  'DCPI',
+  'I Am Second',
+]
+
 const GLOBAL_STATS = [
   { value: '$705K', label: 'Total Funded' },
   { value: '3.3M+', label: 'Lives Impacted' },
@@ -182,7 +190,46 @@ export default function Funding() {
         <p className="mt-10 text-center text-[11px] font-semibold uppercase tracking-[0.45em] text-white/30">
           One fund. Three Gospel outcomes. One global mission.
         </p>
+
+        {/* ── Partner marquee ── */}
+        <div className="mt-12 border-t border-white/8 pt-10">
+          <p className="mb-6 text-center text-[10px] font-semibold uppercase tracking-[0.5em] text-white/25">
+            Trusted Partners
+          </p>
+          <div className="relative overflow-hidden">
+            {/* Left + right edge fades */}
+            <div className="pointer-events-none absolute inset-y-0 left-0 z-10 w-20 bg-gradient-to-r from-zinc-950 to-transparent" />
+            <div className="pointer-events-none absolute inset-y-0 right-0 z-10 w-20 bg-gradient-to-l from-zinc-950 to-transparent" />
+
+            {/* Scrolling track — duplicate list for seamless loop */}
+            <div className="flex animate-marquee whitespace-nowrap">
+              {[...PARTNERS, ...PARTNERS].map((partner, i) => (
+                <span
+                  key={i}
+                  className="mx-10 inline-flex items-center gap-2 text-sm font-bold uppercase tracking-[0.25em] text-white/30 transition-colors duration-300 hover:text-white/60"
+                >
+                  <span className="h-1 w-1 rounded-full bg-white/20" />
+                  {partner}
+                </span>
+              ))}
+            </div>
+          </div>
+        </div>
+
       </div>
+
+      <style>{`
+        @keyframes marquee {
+          0%   { transform: translateX(0); }
+          100% { transform: translateX(-50%); }
+        }
+        .animate-marquee {
+          animation: marquee 28s linear infinite;
+        }
+        .animate-marquee:hover {
+          animation-play-state: paused;
+        }
+      `}</style>
     </section>
   )
 }
