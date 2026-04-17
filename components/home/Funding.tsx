@@ -6,24 +6,21 @@ const FUNDING_ITEMS = [
     icon: BookOpen,
     title: 'Bible Project',
     body: "Help send Bibles and Scripture resources to people who need God’s Word.",
-    image:
-      'https://images.unsplash.com/photo-1519682337058-a94d519337bc?auto=format&fit=crop&w=900&q=80',
+    image: '/images/1b-project/bible-project.jpg',
     accent: 'bg-gradient-to-br from-amber-400/30 via-amber-500/20 to-transparent',
   },
   {
     icon: Megaphone,
     title: 'Evangelism Project',
     body: 'Help fund Gospel outreach, preaching, media, and evangelists reaching people with Jesus.',
-    image:
-      'https://images.unsplash.com/photo-1509099836639-18ba63c09791?auto=format&fit=crop&w=900&q=80',
+    image: '/images/1b-project/evangelism-project.jpg',
     accent: 'bg-gradient-to-br from-sky-500/30 via-sky-600/40 to-transparent',
   },
   {
     icon: Building,
     title: 'Church Planting Project',
     body: 'Help start and strengthen churches, leaders, and discipleship communities around the world.',
-    image:
-      'https://images.unsplash.com/photo-1510626176961-4b57c0a5d614?auto=format&fit=crop&w=900&q=80',
+    image: '/images/1b-project/church-planting-project.jpg',
     accent: 'bg-gradient-to-br from-emerald-500/25 via-emerald-600/40 to-transparent',
   },
 ]
